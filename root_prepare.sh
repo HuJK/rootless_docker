@@ -7,8 +7,8 @@ cd download
 wget https://download.docker.com/linux/static/stable/x86_64/docker-$dv.tgz
 wget https://download.docker.com/linux/static/stable/x86_64/docker-rootless-extras-$dv.tgz
 cd ..
-tar zcvf download/docker-$dv.tgz docker_bin
-tar zcvf download/docker-rootless-extras-$dv.tgz docker_extra
+tar -zxvf download/docker-$dv.tgz 
+tar -zxvf download/docker-rootless-extras-$dv.tgz
 
 cp -r docker/* bin
 cp -r docker-rootless-extras/* bin
