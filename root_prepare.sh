@@ -15,4 +15,4 @@ cp -r docker-rootless-extras/* bin
 cp -r docker-rootless-user/* bin
 
 rm -r docker docker-rootless-extras download
-
+chmod 777 user_data
