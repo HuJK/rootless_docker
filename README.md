@@ -24,6 +24,8 @@ then users can use
 normaly without root nor docker group.
 
 note: ubuntu20.04 users may get error
+----
+
 ```
 docker: Error response from daemon: OCI runtime create failed: /etc/rootless_docker/user_data/user/.local/share/docker/overlay2/c4e36d1dd8273cdb5818d21b62d9248ffc02521aa1e6f13e2df11492aef113a4/merged is not an absolute path or is a symlink: unknown.
 ```
