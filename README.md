@@ -2,7 +2,7 @@
 Setup rootless docker with nvidia-gpu in one command.
 Only tested on Ubuntu 18.04 and 20.04
 
-Step1:
+Step1: root user prepare
 ----
 Run following command with root
 ```
@@ -12,7 +12,7 @@ cd rootless_docker
 root_prepare.sh
 ``` 
 
-Step2:
+Step2: Now, all users can use docker command without add them to docker group.
 ----
 Users can run this command to setup their own docker daemon. I suggest to put it in .bashrc
 ```
