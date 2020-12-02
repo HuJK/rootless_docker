@@ -1,6 +1,6 @@
 # rootless-docker
 Setup rootless docker with nvidia-gpu in one command.
-Only tested on 
+Only tested on Ubuntu 18.04 and 20.04
 
 Step1:
 ----
