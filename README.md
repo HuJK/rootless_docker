@@ -9,7 +9,7 @@ Run following command with root
 cd /etc
 git clone --depth 1 https://github.com/HuJK/rootless_docker.git
 cd rootless_docker
-root_prepare.sh
+./root_prepare.sh
 ``` 
 
 Step2: Now, all users can use docker command without add them to docker group.
