@@ -19,10 +19,6 @@ export XDG_RUNTIME_DIR="$HOME/.docker/run"
 tmux new -d -s dockerd ./dockerd-rootless-tmux.sh $storage_path
 #./dockerd-rootless-tmux.sh $storage_path
 
-echo "Set following envirement variables or save it in your .bashrc to use docker."
-echo "Anyway, if you didn't get what I say(envirement variables .bashrc stuff)"
-echo "Just run me, then copy and past following text in your terminal before you want to use docker"
-echo "==============================================================================================="
 echo "export XDG_RUNTIME_DIR=${XDG_RUNTIME_DIR}"
 echo "export PATH=${storage_path}/$(whoami)/bin:$PATH"
 echo "export DOCKER_HOST=unix:///${storage_path}/$(whoami)/.docker/run/docker.sock"
