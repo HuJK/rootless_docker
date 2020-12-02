@@ -4,7 +4,13 @@ Only tested on Ubuntu 18.04 and 20.04
 
 Step1:
 ----
-Run ```root_prepare.sh``` with root
+Run following command with root
+```
+cd /etc
+git clone --depth 1 https://github.com/HuJK/rootless_docker.git
+cd rootless_docker
+root_prepare.sh
+``` 
 
 Step2:
 ----
