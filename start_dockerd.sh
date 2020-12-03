@@ -15,6 +15,7 @@ echo '{
 
 cp -rnp bin $storage_path/$(whoami)
 cd $storage_path/$(whoami)/bin
+export HOME=$storage_path/$(whoami)
 export XDG_RUNTIME_DIR="$HOME/.docker/run"
 tmux new -d -s dockerd ./dockerd-rootless-tmux.sh $storage_path
 #./dockerd-rootless-tmux.sh $storage_path
