@@ -23,19 +23,19 @@ export XDG_RUNTIME_DIR="$HOME/.docker/run"
 tmux new -d -s dockerd ./dockerd-rootless-tmux.sh $storage_path
 #./dockerd-rootless-tmux.sh $storage_path
 
-
-export XDG_RUNTIME_DIR=${XDG_RUNTIME_DIR}
 export PATH=${storage_path}/$(whoami)/bin:$PATH
-export DOCKER_HOST=unix:///${storage_path}/$(whoami)/.docker/run/docker.sock
+export DOCKER_HOST=unix://${storage_path}/$(whoami)/.docker/run/docker.sock
+
 { # try
+    sleep 1
     docker run --rm -it busybox true
 } || { # catch
     # Restart dockerd
     tmux send-keys -t dockerd C-c
-    sleep 3
+    sleep 1
     tmux new -d -s dockerd ./dockerd-rootless-tmux.sh $storage_path
 }
 
 echo "export XDG_RUNTIME_DIR=${XDG_RUNTIME_DIR}"
-echo "export PATH=${storage_path}/$(whoami)/bin:$PATH"
-echo "export DOCKER_HOST=unix:///${storage_path}/$(whoami)/.docker/run/docker.sock"
+echo "export PATH=${PATH}"
+echo "export DOCKER_HOST=${DOCKER_HOST}"
