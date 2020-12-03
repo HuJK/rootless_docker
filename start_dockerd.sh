@@ -23,6 +23,10 @@ export XDG_RUNTIME_DIR="$HOME/.docker/run"
 tmux new -d -s dockerd ./dockerd-rootless-tmux.sh $storage_path
 #./dockerd-rootless-tmux.sh $storage_path
 
+
+export XDG_RUNTIME_DIR=${XDG_RUNTIME_DIR}
+export PATH=${storage_path}/$(whoami)/bin:$PATH
+export DOCKER_HOST=unix:///${storage_path}/$(whoami)/.docker/run/docker.sock
 { # try
     docker run --rm -it busybox true
 } || { # catch
