@@ -1,5 +1,8 @@
 # rootless-docker
 Setup rootless docker with nvidia-gpu in one command.
+
+This allows all users use nvidia-docker without root nor docker group. All process will userns-remapped, so users won't able break the system even mount / in docker.
+
 Only tested on Ubuntu 18.04 and 20.04
 
 Step1: root user prepare
