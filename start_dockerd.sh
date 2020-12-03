@@ -15,10 +15,22 @@ echo '{
 
 cp -rnp bin $storage_path/$(whoami)
 cd $storage_path/$(whoami)/bin
+
 export HOME=$storage_path/$(whoami)
 export XDG_RUNTIME_DIR="$HOME/.docker/run"
+
+# Running dockerd in background
 tmux new -d -s dockerd ./dockerd-rootless-tmux.sh $storage_path
 #./dockerd-rootless-tmux.sh $storage_path
+
+{ # try
+    docker run --rm -it busybox true
+} || { # catch
+    # Restart dockerd
+    tmux send-keys -t dockerd C-c
+    sleep 3
+    tmux new -d -s dockerd ./dockerd-rootless-tmux.sh $storage_path
+}
 
 echo "export XDG_RUNTIME_DIR=${XDG_RUNTIME_DIR}"
 echo "export PATH=${storage_path}/$(whoami)/bin:$PATH"
