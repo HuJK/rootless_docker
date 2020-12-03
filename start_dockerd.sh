@@ -11,7 +11,7 @@ echo '{
             "runtimeArgs": []
         }
     }
-}' >> $storage_path/$(whoami)/.config/docker/daemon.json
+}' > $storage_path/$(whoami)/.config/docker/daemon.json
 
 cp -rnp bin $storage_path/$(whoami)
 cd $storage_path/$(whoami)/bin
