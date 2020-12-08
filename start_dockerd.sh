@@ -27,8 +27,13 @@ export PATH=${storage_path}/$(whoami)/bin:$PATH
 export DOCKER_HOST=unix://${storage_path}/$(whoami)/.docker/run/docker.sock
 
 { # try
-    sleep 1
-    docker run --rm -it busybox true
+    if [ ! -f ~/.rootless_docker_success ]; then
+        sleep 1
+        docker run --rm -it busybox true
+        echo 1 > ~/.rootless_docker_success
+    else
+        false
+    fi
 } || { # catch
     # Restart dockerd
     tmux send-keys -t dockerd C-c
