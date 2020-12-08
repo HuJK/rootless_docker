@@ -28,8 +28,8 @@ export DOCKER_HOST=unix://${storage_path}/$(whoami)/.docker/run/docker.sock
 
 { # try
     if [ ! -f ~/.rootless_docker_success ]; then
-        sleep 1
-        docker run --rm -it busybox true
+        sleep 1 &&
+        docker run --rm -it busybox true &&
         echo 1 > ~/.rootless_docker_success
     else
         true
