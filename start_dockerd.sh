@@ -1,4 +1,11 @@
 #!/bin/bash
+
+tmux has-session -t dockerd 2>/dev/null
+
+if [ $? = 0 ]; then
+  exit 0
+fi
+
 cd /etc/rootless_docker
 #set -x
 storage_path=/etc/rootless_docker/user_data
