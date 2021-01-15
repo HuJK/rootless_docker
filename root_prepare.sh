@@ -1,6 +1,7 @@
 #!/bin/bash
-echo "overlay permit_mounts_in_userns=1" > /etc/modprobe.d/rootless_docker.conf
+echo "options overlay permit_mounts_in_userns=1" > /etc/modprobe.d/rootless_docker.conf
 echo "kernel.unprivileged_userns_clone=1" > /etc/sysctl.d/99-rootless_docker.conf
+grep -qxF "source <( /etc/rootless_docker/start_dockerd.sh )" /etc/skel/.bashrc || echo "source <( /etc/rootless_docker/start_dockerd.sh )" >> /etc/skel/.bashrc
 
 sysctl --system
 
