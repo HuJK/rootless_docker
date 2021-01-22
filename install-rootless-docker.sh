@@ -5,7 +5,7 @@ grep -qxF "source <( /etc/rootless_docker/start_dockerd.sh )" /etc/skel/.bashrc 
 
 sysctl --system
 
-apt-get install -y uidmap iptables tmux newuidmap newgidmap 
+apt-get install -y uidmap iptables tmux
 apt-get install -y nvidia-container-runtime
 export dv=20.10.2
 mkdir download
