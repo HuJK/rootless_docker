@@ -7,11 +7,11 @@ sysctl --system
 
 apt-get install -y uidmap iptables nvidia-container-runtime
 apt-get install tmux newuidmap newgidmap
-export dv=19.03.9
+export dv=20.10.2
 mkdir download
 cd download
-wget https://download.docker.com/linux/static/stable/x86_64/docker-$dv.tgz
-wget https://download.docker.com/linux/static/stable/x86_64/docker-rootless-extras-$dv.tgz
+wget https://download.docker.com/linux/static/stable/$(uname -m)/docker-$dv.tgz
+wget https://download.docker.com/linux/static/stable/$(uname -m)/docker-rootless-extras-$dv.tgz
 cd ..
 tar -zxvf download/docker-$dv.tgz 
 tar -zxvf download/docker-rootless-extras-$dv.tgz
