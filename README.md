@@ -5,7 +5,7 @@ This allows all users use nvidia-docker without root nor docker group. All proce
 
 Only tested on Ubuntu 18.04 and 20.04
 
-Step1: root user prepare
+Step1: Install me by root
 ----
 Run following command with root
 ```
