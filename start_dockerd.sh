@@ -40,7 +40,8 @@ if [ $? != 0 ]; then
   } || { # catch
       # Restart dockerd
       tmux send-keys -t dockerd C-c
-      sleep 1
+      sleep 3
+      tmux kill-session -t dockerd
       tmux new -d -s dockerd ./dockerd-rootless-tmux.sh $storage_path
   }
 fi
