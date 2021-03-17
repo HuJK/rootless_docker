@@ -7,7 +7,7 @@ sysctl --system
 
 apt-get install -y uidmap iptables tmux
 apt-get install -y nvidia-container-runtime
-export dv=20.10.2
+export dv=20.10.5
 mkdir download
 cd download
 wget https://download.docker.com/linux/static/stable/$(uname -m)/docker-$dv.tgz
