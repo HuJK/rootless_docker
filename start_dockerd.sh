@@ -29,22 +29,23 @@ if [ $? != 0 ]; then
   # Running dockerd in background
   tmux new -d -s dockerd ./dockerd-rootless-tmux.sh $storage_path
   #./dockerd-rootless-tmux.sh $storage_path
-  { # try
-      if [ ! -f ~/.rootless_docker_success ]; then
-          sleep 1 &&
-          docker run --rm -it busybox true &&
-          echo 1 > ~/.rootless_docker_success
-      else
-          true
-      fi
-  } || { # catch
-      # Restart dockerd
-      tmux send-keys -t dockerd C-c
-      sleep 3
-      tmux kill-session -t dockerd
-      tmux new -d -s dockerd ./dockerd-rootless-tmux.sh $storage_path
-  }
 fi
+
+{ # try
+    if [ ! -f ~/.rootless_docker_success ]; then
+        sleep 1 &&
+        docker run --rm -it busybox true &&
+        echo 1 > ~/.rootless_docker_success
+    else
+        true
+    fi
+} || { # catch
+    # Restart dockerd
+    tmux send-keys -t dockerd C-c
+    sleep 3
+    tmux kill-session -t dockerd
+    tmux new -d -s dockerd ./dockerd-rootless-tmux.sh $storage_path
+}
 
 echo "export XDG_RUNTIME_DIR=${XDG_RUNTIME_DIR}"
 echo "export PATH=${PATH}"
